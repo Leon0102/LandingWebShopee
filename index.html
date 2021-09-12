@@ -123,9 +123,12 @@
                                 Trợ giúp
                             </a>
                         </li>
-                        <!-- <li class="navbar__item navbar__item--strong navbar__item--separate">Đăng ký</li>
-                        <li class="navbar__item navbar__item--strong">Đăng nhập</li> -->
-                        <li class="navbar__item navbar-user">
+                        <li onmousedown="mouseDown1()"
+                            class="navbar__item navbar__item--strong js-register navbar__item--separate">
+                            Đăng ký
+                        </li>
+                        <li onmousedown="mouseDown2()" class="navbar__item navbar__item--strong js-login">Đăng nhập</li>
+                        <!-- <li class="navbar__item navbar-user">
                             <img src="./assets/img/avatarjpg.jpg" alt="" class="navbar-user-img">
                             <span class="navbar-user-name">Leon Nguyễn</span>
 
@@ -143,7 +146,7 @@
                                     <a href="">Đăng xuất</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- Header width search -->
@@ -957,15 +960,12 @@
             </div>
         </footer>
         <!-- Modal layout -->
-        <!-- <div class="modal">
+        <div class="modal">
             <div class="modal__overlay">
-
             </div>
-            <div class="modal__body"> -->
-
-
-        <!-- Register form -->
-        <!-- <div class="auth-form">
+            <div class="modal__body">
+                <!-- Register form -->
+                <div class="auth-form">
                     <div class="auth-form__container">
                         <div class="auth-form__header">
                             <h3 class="auth-form__heading">Đăng ký</h3>
@@ -1005,17 +1005,15 @@
                         </a>
                         <a href="" class="auth-form__social--google btn btn--size-s btn--icon">
                             <i class="auth-form__social-icon fab fa-google"></i>
-                            
+
                             <span class="auth-form__social-title">
                                 Kết nối với Google
                             </span>
                         </a>
                     </div>
-                </div> -->
-
-
-        <!-- Login form -->
-        <!-- <div class="auth-form">
+                </div>
+                <!-- Login form -->
+                <div class="auth-form">
                     <div class="auth-form__container">
                         <div class="auth-form__header">
                             <h3 class="auth-form__heading">Đăng nhập</h3>
@@ -1052,7 +1050,7 @@
                         </a>
                         <a href="" class="auth-form__social--google btn btn--size-s btn--icon">
                             <i class="auth-form__social-icon fab fa-google"></i>
-                            
+
                             <span class="auth-form__social-title">
                                 Kết nối với Google
                             </span>
@@ -1060,10 +1058,41 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
     <script>
-
+        const loginBtn = document.querySelector('.js-login');
+        const registerBtn = document.querySelector('.js-register');
+        const loginForm = document.querySelectorAll('.auth-form')[0];
+        const registerForm = document.querySelectorAll('.auth-form')[1];
+        const modal = document.querySelector('.modal');
+        const modalbody = document.querySelector('.modal__body');
+        // Mở form Login
+        function mouseDown1() {
+            modal.classList.add('open');
+            loginForm.classList.add('form-login');
+        }
+        loginBtn.addEventListener('click', mouseDown1);
+        // Mở form đăng ký
+        function mouseDown2() {
+            modal.classList.add('open');
+            registerForm.classList.add('form-register');
+        }
+        registerBtn.addEventListener('click', mouseDown2);
+        // Đóng form
+        function hideForm() {
+            modal.classList.remove('open');
+            if (loginForm.classList.contains('form-login')) {
+                loginForm.classList.remove('form-login')
+            }
+            else {
+                registerForm.classList.remove('form-register')
+            }
+        }
+        modal.addEventListener('click', hideForm);
+        modalbody.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
     </script>
 </body>
 
