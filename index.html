@@ -123,11 +123,11 @@
                                 Trợ giúp
                             </a>
                         </li>
-                        <li onmousedown="mouseDown1()"
+                        <li onclick="mouseClick1()"
                             class="navbar__item navbar__item--strong js-register navbar__item--separate">
                             Đăng ký
                         </li>
-                        <li onmousedown="mouseDown2()" class="navbar__item navbar__item--strong js-login">Đăng nhập</li>
+                        <li onclick="mouseClick2()" class="navbar__item navbar__item--strong js-login">Đăng nhập</li>
                         <!-- <li class="navbar__item navbar-user">
                             <img src="./assets/img/avatarjpg.jpg" alt="" class="navbar-user-img">
                             <span class="navbar-user-name">Leon Nguyễn</span>
@@ -1068,17 +1068,15 @@
         const modal = document.querySelector('.modal');
         const modalbody = document.querySelector('.modal__body');
         // Mở form Login
-        function mouseDown1() {
+        function mouseClick1() {
             modal.classList.add('open');
             loginForm.classList.add('form-login');
         }
-        loginBtn.addEventListener('click', mouseDown1);
         // Mở form đăng ký
-        function mouseDown2() {
+        function mouseClick2() {
             modal.classList.add('open');
             registerForm.classList.add('form-register');
         }
-        registerBtn.addEventListener('click', mouseDown2);
         // Đóng form
         function hideForm() {
             modal.classList.remove('open');
